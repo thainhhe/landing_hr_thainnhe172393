@@ -18,6 +18,8 @@ function normalize(str: string) {
 export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [filters, setFilters] = useState({ kcn: '', salary: '', gender: '' });
+  const [isExpanded, setIsExpanded] = useState(false);
+  const activeFiltersCount = (filters.kcn ? 1 : 0) + (filters.salary ? 1 : 0) + (filters.gender ? 1 : 0);
 
   const kcnList = useMemo(() => {
     const set = new Set<string>();
@@ -61,26 +63,39 @@ export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
     <>
       <section className="sticky top-16 z-40 bg-[var(--color-bg)] py-5 pb-3 border-b border-[var(--color-border)]">
         <div className="container mx-auto px-4">
-          <div className="relative flex items-center mb-3">
-            <span className="absolute left-3.5 text-base pointer-events-none z-10">🔍</span>
-            <input
-              type="text"
-              className="w-full h-12 pl-11 pr-11 bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-sm font-medium outline-none transition-colors duration-250 focus:border-[var(--color-orange)] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] placeholder:text-[var(--color-text-muted)] placeholder:font-normal"
-              placeholder="Tìm theo tên công việc, công ty..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {searchQuery && (
-              <button
-                className="absolute right-3 w-7 h-7 rounded-full bg-[var(--color-border)] text-[var(--color-text-muted)] text-xs flex items-center justify-center hover:bg-[var(--color-red-dim)] hover:text-[var(--color-red)] transition-colors"
-                onClick={() => setSearchQuery('')}
-              >
-                ✕
-              </button>
-            )}
+          <div className="flex gap-2 mb-1 sm:mb-3 sm:block">
+            <div className="relative flex items-center flex-1">
+              <span className="absolute left-3.5 text-base pointer-events-none z-10">🔍</span>
+              <input
+                type="text"
+                className="w-full h-12 pl-11 pr-11 bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-sm font-medium outline-none transition-colors duration-250 focus:border-[var(--color-orange)] focus:shadow-[0_0_0_3px_rgba(255,107,53,0.15)] placeholder:text-[var(--color-text-muted)] placeholder:font-normal"
+                placeholder="Tìm theo tên công việc, công ty..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button
+                  className="absolute right-3 w-7 h-7 rounded-full bg-[var(--color-border)] text-[var(--color-text-muted)] text-xs flex items-center justify-center hover:bg-[var(--color-red-dim)] hover:text-[var(--color-red)] transition-colors"
+                  onClick={() => setSearchQuery('')}
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+            
+            <button
+              className={`sm:hidden relative flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-xl border-[1.5px] transition-colors ${activeFiltersCount > 0 || isExpanded ? 'border-[var(--color-orange)] bg-[var(--color-orange-dim)] text-[var(--color-orange)]' : 'border-[var(--color-border)] bg-[var(--color-card)] text-[var(--color-text-muted)]'}`}
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-label="Bộ lọc"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+              {activeFiltersCount > 0 && (
+                <span className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-[var(--color-red)] rounded-full border-2 border-[var(--color-bg)]"></span>
+              )}
+            </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2.5 sm:gap-2 items-end">
+          <div className={`${isExpanded ? 'grid mt-3' : 'hidden'} sm:flex sm:mt-0 grid-cols-2 sm:flex-wrap gap-2.5 sm:gap-2 items-end`}>
             <div className="flex flex-col gap-1 sm:flex-1 sm:min-w-[130px] w-full min-w-0">
               <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5 truncate" title="Khu công nghiệp">Khu công nghiệp</label>
               <select
