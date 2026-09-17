@@ -80,11 +80,11 @@ export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
             )}
           </div>
 
-          <div className="flex flex-wrap gap-2 items-end">
-            <div className="flex flex-col gap-1 flex-1 min-w-[130px]">
-              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5">Khu công nghiệp</label>
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2.5 sm:gap-2 items-end">
+            <div className="flex flex-col gap-1 sm:flex-1 sm:min-w-[130px] w-full min-w-0">
+              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5 truncate" title="Khu công nghiệp">Khu công nghiệp</label>
               <select
-                className="h-10 px-3 bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
+                className="h-10 px-3 w-full bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
                 style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748B\' stroke-width=\'2\'%3E%3Cpath d=\'M6 9l6 6 6-6\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center', backgroundSize: '16px' }}
                 value={filters.kcn}
                 onChange={(e) => handleFilterChange('kcn', e.target.value)}
@@ -96,10 +96,10 @@ export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
               </select>
             </div>
             
-            <div className="flex flex-col gap-1 flex-1 min-w-[130px]">
-              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5">Mức lương (tối thiểu)</label>
+            <div className="flex flex-col gap-1 sm:flex-1 sm:min-w-[130px] w-full min-w-0">
+              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5 truncate" title="Mức lương (tối thiểu)">Mức lương (tối thiểu)</label>
               <select
-                className="h-10 px-3 bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
+                className="h-10 px-3 w-full bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
                 style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748B\' stroke-width=\'2\'%3E%3Cpath d=\'M6 9l6 6 6-6\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center', backgroundSize: '16px' }}
                 value={filters.salary}
                 onChange={(e) => handleFilterChange('salary', e.target.value)}
@@ -111,10 +111,10 @@ export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
               </select>
             </div>
 
-            <div className="flex flex-col gap-1 flex-1 min-w-[130px]">
-              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5">Giới tính</label>
+            <div className="flex flex-col gap-1 sm:flex-1 sm:min-w-[130px] w-full min-w-0">
+              <label className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wide pl-0.5 truncate" title="Giới tính">Giới tính</label>
               <select
-                className="h-10 px-3 bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
+                className="h-10 px-3 w-full bg-[var(--color-card)] border-[1.5px] border-[var(--color-border)] rounded-xl text-[var(--color-text-main)] text-[13px] font-medium outline-none cursor-pointer focus:border-[var(--color-orange)] transition-colors appearance-none pr-8"
                 style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%2364748B\' stroke-width=\'2\'%3E%3Cpath d=\'M6 9l6 6 6-6\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 10px center', backgroundSize: '16px' }}
                 value={filters.gender}
                 onChange={(e) => handleFilterChange('gender', e.target.value)}
@@ -127,7 +127,7 @@ export default function SearchFilter({ initialJobs }: { initialJobs: Job[] }) {
             </div>
 
             <button
-              className="h-10 px-3.5 rounded-xl border-[1.5px] border-[var(--color-red-dim)] bg-[var(--color-red-dim)] text-[var(--color-red)] text-xs font-semibold whitespace-nowrap hover:bg-[var(--color-red)] hover:text-white transition-all self-end"
+              className="h-10 px-3.5 w-full sm:w-auto rounded-xl border-[1.5px] border-[var(--color-red-dim)] bg-[var(--color-red-dim)] text-[var(--color-red)] text-xs font-semibold whitespace-nowrap hover:bg-[var(--color-red)] hover:text-white transition-all sm:self-end"
               onClick={resetFilters}
             >
               Đặt lại

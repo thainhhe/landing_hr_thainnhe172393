@@ -82,7 +82,7 @@ export default function JobCard({ job }: { job: Job }) {
   }
 
   return (
-    <article className={`bg-[var(--color-card)] border-[1.5px] rounded-2xl p-4 flex flex-col gap-3 shadow-[0_2px_16px_rgba(0,0,0,0.5)] transition-all duration-250 relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.6)] ${urgent ? 'border-[rgba(255,107,53,0.3)]' : 'border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}`} id={`job-${job.id}`}>
+    <article className={`bg-[var(--color-card)] border-[1.5px] rounded-2xl p-4 flex flex-col gap-3 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-250 relative overflow-hidden group hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] ${urgent ? 'border-[rgba(255,107,53,0.3)]' : 'border-[var(--color-border)] hover:border-[var(--color-border-hover)]'}`} id={`job-${job.id}`}>
       
       {/* Top border highlight */}
       <div className={`absolute top-0 left-0 right-0 h-[3px] transition-opacity duration-250 ${urgent ? 'opacity-100 bg-gradient-to-r from-[var(--color-orange)] to-[#FF4500]' : 'opacity-0 bg-gradient-to-r from-transparent via-[var(--color-orange)] to-transparent group-hover:opacity-100'}`}></div>
@@ -156,25 +156,7 @@ export default function JobCard({ job }: { job: Job }) {
           >
             💬 Liên hệ HR
           </a>
-          {hasSource && (
-            <button
-              onClick={() => {
-                if (job.source_link) window.open(job.source_link, '_blank');
-              }}
-              className="flex items-center justify-center gap-[5px] w-full h-9 rounded-xl border-[1.5px] border-[var(--color-border)] bg-transparent text-[var(--color-text-muted)] text-xs font-semibold hover:border-[var(--color-blue)] hover:text-[var(--color-blue)] hover:bg-[var(--color-blue-dim)] transition-all duration-150"
-            >
-              🔗 Xem nguồn tuyển dụng ↗
-            </button>
-          )}
         </div>
-
-        <a
-          href="#"
-          onClick={(e) => { e.preventDefault(); alert('Cảm ơn bạn đã báo cáo. Tính năng sẽ sớm được cập nhật.'); }}
-          className="flex items-center justify-center gap-1 text-[11px] text-[var(--color-text-muted)] py-0.5 hover:text-[var(--color-red)] transition-colors duration-150"
-        >
-          🚩 Báo tin sai / hết hạn
-        </a>
       </div>
     </article>
   );
