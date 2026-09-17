@@ -37,7 +37,7 @@ export async function fetchJobs(): Promise<Job[]> {
   const text = await response.text();
   
   // Strip wrapper
-  const match = text.match(/google\.visualization\.Query\.setResponse\((.*)\);?\s*$/s);
+  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?\s*$/);
   if (!match || !match[1]) throw new Error('Invalid gviz response format');
 
   const data = JSON.parse(match[1]);
