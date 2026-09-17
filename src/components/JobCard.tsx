@@ -66,9 +66,13 @@ export default function JobCard({ job }: { job: Job }) {
   const type = (job.hr_contact_type || '').toLowerCase();
   let href = '#';
   switch (type) {
-    case 'zalo':
-      href = `https://zalo.me/${job.hr_contact}`;
+    case 'zalo': {
+      let phone = String(job.hr_contact || '').replace(/[^0-9]/g, '');
+      if (phone.startsWith('84')) phone = '0' + phone.slice(2);
+      if (phone && !phone.startsWith('0')) phone = '0' + phone;
+      href = `https://zalo.me/${phone}`;
       break;
+    }
     case 'messenger':
       href = job.hr_contact && job.hr_contact.startsWith('http')
         ? job.hr_contact
