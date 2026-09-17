@@ -1,0 +1,1290 @@
+Dưới đây là bản đặc tả theo góc nhìn **Senior BA**, tập trung vào business, user flow, functional requirement, business rule và acceptance criteria; **không quy định tech stack**. Bạn có thể đưa tài liệu này cho AI coding agent/dev để triển khai.
+
+# Software Requirements Specification
+
+## Landing Page Tổng Hợp Việc Làm Khu Công Nghiệp — MVP
+
+**Version:** 1.0
+**Product stage:** MVP / Market Validation
+**Document type:** Business & Functional Requirements Specification
+
+---
+
+## 1. Product Overview
+
+Sản phẩm là một landing page tổng hợp các tin tuyển dụng tại các khu công nghiệp.
+
+Nguồn traffic ban đầu chủ yếu đến từ các bài đăng trong cộng đồng/nhóm tuyển dụng trên mạng xã hội.
+
+Người tìm việc không cần đăng ký tài khoản. Họ truy cập website, tìm/lọc công việc phù hợp và có thể liên hệ trực tiếp với HR qua kênh liên hệ được cung cấp.
+
+### Luồng kinh doanh chính
+
+```text
+Bài đăng mạng xã hội
+        ↓
+Landing Page
+        ↓
+Tìm kiếm / Lọc
+        ↓
+Job Card
+        ↓
+┌──────────────┬──────────────┐
+↓              ↓
+Liên hệ HR     Xem nguồn gốc
+```
+
+MVP ưu tiên **tốc độ tìm việc, độ tin cậy và tỷ lệ chuyển đổi sang liên hệ HR**, thay vì xây dựng một nền tảng tuyển dụng đầy đủ.
+
+---
+
+# 2. Business Objectives
+
+### BO-01 — Validate nhu cầu
+
+Xác định liệu người tìm việc từ các cộng đồng tuyển dụng có sẵn sàng truy cập một website bên ngoài để xem danh sách việc làm hay không.
+
+### BO-02 — Validate hành vi
+
+Xác định liệu người dùng sau khi truy cập có thực hiện các hành động:
+
+```text
+Search
+Filter
+Click HR
+View Source
+```
+
+hay không.
+
+### BO-03 — Xây dựng niềm tin
+
+Người dùng phải có khả năng biết:
+
+* Tin được cập nhật khi nào.
+* Tin đến từ nguồn nào.
+* Có thể tự kiểm tra nguồn tuyển dụng.
+* Website có hay không có quan hệ đại diện với doanh nghiệp.
+
+### BO-04 — Giảm tối đa friction
+
+Người dùng không phải:
+
+* đăng ký;
+* đăng nhập;
+* tạo CV;
+* điền form;
+* tạo hồ sơ;
+
+trước khi liên hệ HR.
+
+---
+
+# 3. MVP Success Metrics
+
+Hệ thống phải cung cấp đủ dữ liệu để đo funnel:
+
+```text
+Social Post
+     ↓
+Landing Page Visit
+     ↓
+Search / Filter
+     ↓
+Job Card
+     ↓
+HR Contact Click
+```
+
+Các KPI cần có khả năng tính:
+
+### Acquisition
+
+```text
+Landing Page Visitors
+Visitors by source
+Visitors by campaign
+```
+
+### Engagement
+
+```text
+Search usage
+Filter usage
+Jobs displayed
+```
+
+### Conversion
+
+KPI quan trọng nhất:
+
+```text
+HR Contact Click Rate
+
+= HR Contact Click
+  ─────────────────
+  Landing Visitors
+```
+
+Ngoài ra:
+
+```text
+Source Click Rate
+
+= Source Click
+  ────────────
+  Landing Visitors
+```
+
+MVP **không đặt target KPI cố định** trước khi có dữ liệu thực tế.
+
+---
+
+# 4. User Roles
+
+MVP chỉ có một user role trực tiếp.
+
+### Job Seeker
+
+Người lao động đang tìm việc tại khu công nghiệp.
+
+Có thể:
+
+* xem việc;
+* tìm kiếm;
+* lọc;
+* liên hệ HR;
+* kiểm tra nguồn tuyển dụng.
+
+### Content Administrator
+
+Không cần giao diện quản trị riêng trong MVP.
+
+Administrator chịu trách nhiệm:
+
+* thêm tin;
+* cập nhật tin;
+* đóng tin hết hạn;
+* sửa thông tin;
+* quản lý nguồn;
+* quản lý link HR.
+
+---
+
+# 5. User Journey chính
+
+## Journey 01 — Từ Facebook đến HR
+
+```text
+Người dùng thấy bài Facebook
+
+        ↓
+
+Click link
+
+        ↓
+
+Landing Page mở
+
+        ↓
+
+Nhìn thấy ngay
+danh sách công việc
+
+        ↓
+
+Scroll / Search / Filter
+
+        ↓
+
+Tìm thấy công việc phù hợp
+
+        ↓
+
+Click "Liên hệ HR"
+
+        ↓
+
+Mở kênh liên hệ HR
+```
+
+Không có bước trung gian bắt buộc.
+
+---
+
+# 6. Landing Page Requirements
+
+## FR-01 — Header
+
+Header cần tối giản.
+
+Phải thể hiện:
+
+**Tên/Logo sản phẩm**
+
+và có thể có tagline:
+
+> Việc làm KCN mới nhất • Có nguồn tuyển dụng
+
+Không cần navigation phức tạp.
+
+---
+
+# 7. Trust Information
+
+## FR-02 — Trust Banner
+
+Landing page phải có khu vực giải thích ngắn gọn nguồn dữ liệu.
+
+Ví dụ:
+
+> 🛡️ Tin tuyển dụng có nguồn
+> Thông tin được tổng hợp từ các nguồn tuyển dụng công khai để người tìm việc có thể kiểm tra trước khi ứng tuyển.
+
+Kèm cảnh báo:
+
+> ⚠️ Không chuyển tiền hoặc đặt cọc khi xin việc. Hãy xác minh thông tin tuyển dụng trước khi cung cấp thông tin cá nhân.
+
+### Acceptance Criteria
+
+**AC-02.1**
+Người dùng có thể nhìn thấy thông tin trust mà không cần thực hiện thao tác đặc biệt.
+
+**AC-02.2**
+Nội dung không được khiến người dùng hiểu nhầm rằng mọi tin đã được doanh nghiệp xác minh nếu thực tế chưa được xác minh.
+
+---
+
+# 8. Search
+
+## FR-03 — Search Job
+
+Người dùng có thể nhập keyword.
+
+Search tối thiểu theo:
+
+```text
+Company Name
+Job Position
+```
+
+Ví dụ:
+
+```text
+"Canon"
+
+→ Canon Việt Nam
+```
+
+hoặc:
+
+```text
+"công nhân"
+
+→ Công nhân sản xuất
+→ Công nhân lắp ráp
+→ Công nhân đóng gói
+```
+
+### Acceptance Criteria
+
+**AC-03.1**
+Kết quả cập nhật mà không yêu cầu reload toàn bộ trang.
+
+**AC-03.2**
+Search không phân biệt chữ hoa/chữ thường.
+
+**AC-03.3**
+Nếu không có kết quả, hiển thị Empty State.
+
+Ví dụ:
+
+> Không tìm thấy công việc phù hợp.
+> Hãy thử từ khóa hoặc bộ lọc khác.
+
+---
+
+# 9. Job Filtering
+
+## FR-04 — Filter theo khu công nghiệp
+
+Người dùng có thể chọn:
+
+```text
+Tất cả
+KCN A
+KCN B
+KCN C
+...
+```
+
+Chỉ hiển thị KCN có tin tuyển dụng đang hoạt động.
+
+---
+
+## FR-05 — Filter theo mức lương
+
+Hệ thống cho phép lọc theo khoảng/threshold mức lương.
+
+Ví dụ:
+
+```text
+Tất cả
+Từ 8 triệu
+Từ 10 triệu
+Từ 12 triệu
+Từ 15 triệu
+```
+
+---
+
+## FR-06 — Filter theo đối tượng tuyển dụng
+
+Có thể bao gồm:
+
+```text
+Tất cả
+Nam
+Nữ
+Nam/Nữ
+```
+
+Một tin `Nam/Nữ` phải phù hợp khi người dùng tìm:
+
+```text
+Nam
+```
+
+hoặc:
+
+```text
+Nữ
+```
+
+---
+
+## FR-07 — Combine Filters
+
+Các filter phải có khả năng hoạt động đồng thời.
+
+Ví dụ:
+
+```text
+KCN Thăng Long
++
+Từ 10 triệu
++
+Nữ
+```
+
+→ chỉ trả về công việc thỏa mãn toàn bộ điều kiện.
+
+Search cũng có thể kết hợp filter.
+
+---
+
+# 10. Job List
+
+## FR-08 — Job Count
+
+Phía trên danh sách hiển thị số lượng kết quả.
+
+Ví dụ:
+
+> 🔥 **27 việc đang tuyển**
+
+Sau khi filter:
+
+> **8 việc phù hợp**
+
+Job count phải cập nhật theo kết quả hiện tại.
+
+---
+
+# 11. Job Card
+
+## FR-09 — Job Card Information
+
+Mỗi Job Card phải ưu tiên những thông tin giúp người dùng quyết định nhanh.
+
+### Required Information
+
+```text
+Company Name
+Position
+Salary
+Location
+HR Contact
+Source
+Updated Date
+```
+
+### Optional Information
+
+```text
+Company Logo
+Gender
+Age
+Shift
+Experience
+Urgent
+```
+
+Nếu optional field không có dữ liệu:
+
+**không hiển thị field đó.**
+
+Không hiển thị:
+
+> Chưa cập nhật
+
+tràn lan trên card.
+
+---
+
+# 12. Job Card Visual Priority
+
+Thứ tự ưu tiên thông tin:
+
+### Level 1
+
+```text
+Company
+Position
+Salary
+Location
+```
+
+### Level 2
+
+```text
+Gender
+Age
+Shift
+Experience
+```
+
+### Level 3
+
+```text
+Source
+Updated date
+```
+
+### Primary CTA
+
+```text
+💬 Liên hệ HR
+```
+
+### Secondary CTA
+
+```text
+Xem nguồn tuyển dụng ↗
+```
+
+Primary CTA phải nổi bật hơn Secondary CTA.
+
+---
+
+# 13. Urgent Jobs
+
+## FR-10 — Urgent Indicator
+
+Nếu:
+
+```text
+urgent = true
+```
+
+hiển thị badge:
+
+> 🔥 TUYỂN GẤP
+
+Nếu:
+
+```text
+urgent = false
+```
+
+không hiển thị badge.
+
+Không tự động xác định `"Tuyển gấp"` dựa trên ngày đăng.
+
+---
+
+# 14. HR Contact
+
+## FR-11 — Contact HR
+
+Khi người dùng click:
+
+> 💬 Liên hệ HR
+
+hệ thống mở kênh liên hệ được cấu hình cho tin đó.
+
+Supported contact types MVP:
+
+```text
+Zalo
+Messenger
+Phone
+```
+
+CTA nên phản ánh đúng loại contact.
+
+Ví dụ:
+
+```text
+💬 Liên hệ HR qua Zalo
+
+💬 Nhắn HR trên Messenger
+
+☎️ Gọi HR
+```
+
+---
+
+# 15. HR Contact Business Rules
+
+## BR-01
+
+Chỉ hiển thị CTA HR khi tồn tại thông tin liên hệ hợp lệ.
+
+## BR-02
+
+Không tự suy đoán tài khoản HR từ tên công ty.
+
+## BR-03
+
+Nếu không xác định được HR đáng tin cậy nhưng có nguồn tuyển dụng:
+
+chỉ hiển thị:
+
+> Xem nguồn tuyển dụng
+
+## BR-04
+
+Nếu tin chỉ được tổng hợp từ nguồn công khai, website không được thể hiện rằng HR hoặc doanh nghiệp đã hợp tác/xác minh tin nếu điều đó chưa xảy ra.
+
+---
+
+# 16. Recruitment Source
+
+## FR-12 — View Original Source
+
+Mỗi tin nên có khả năng chứa:
+
+```text
+source_link
+```
+
+Người dùng click:
+
+> 🔗 Xem nguồn tuyển dụng
+
+→ mở nguồn gốc.
+
+Ví dụ:
+
+```text
+Facebook post
+Facebook Page
+Website doanh nghiệp
+Recruitment page
+```
+
+---
+
+# 17. Source Classification
+
+Định nghĩa 3 trạng thái để hỗ trợ mở rộng sau này.
+
+### SOURCE
+
+> 🔗 Có nguồn tuyển dụng
+
+Tin được administrator tổng hợp từ nguồn công khai.
+
+### HR_POSTED
+
+> ✓ HR đăng tin
+
+Tin được HR gửi/đăng trực tiếp.
+
+### COMPANY_VERIFIED
+
+> ✓ Doanh nghiệp xác nhận
+
+Tin đã được xác nhận theo quy trình xác minh của hệ thống.
+
+**MVP có thể chỉ sử dụng SOURCE.**
+
+---
+
+# 18. Updated Information
+
+## FR-13 — Updated Date
+
+Mỗi tin phải có:
+
+```text
+updated_at
+```
+
+Ví dụ:
+
+> Cập nhật 17/09
+
+hoặc:
+
+> Cập nhật hôm nay
+
+Mục đích là giúp người dùng đánh giá độ mới của tin.
+
+---
+
+# 19. Job Status
+
+## FR-14 — Job Status
+
+Mỗi job phải có trạng thái tối thiểu:
+
+```text
+ACTIVE
+EXPIRED
+```
+
+### Business Rule
+
+Chỉ:
+
+```text
+ACTIVE
+```
+
+được xuất hiện trong danh sách việc làm.
+
+Tin:
+
+```text
+EXPIRED
+```
+
+không được hiển thị cho Job Seeker.
+
+---
+
+# 20. Sorting
+
+## FR-15 — Default Sorting
+
+Mặc định ưu tiên:
+
+```text
+Updated Date DESC
+```
+
+Tin mới cập nhật nhất xuất hiện trước.
+
+Nếu hai tin cùng thời điểm cập nhật, hệ thống có thể giữ thứ tự dữ liệu hiện có.
+
+Không mặc định đưa `"Tuyển gấp"` lên đầu nếu chưa có business rule riêng.
+
+---
+
+# 21. Empty State
+
+## FR-16
+
+Nếu filter/search không trả về job:
+
+Hiển thị:
+
+> **Không tìm thấy công việc phù hợp**
+>
+> Hãy thử thay đổi từ khóa hoặc bộ lọc.
+
+Có CTA:
+
+> Xóa bộ lọc
+
+---
+
+# 22. Loading State
+
+## FR-17
+
+Trong khi dữ liệu đang được tải:
+
+Không hiển thị trang trắng.
+
+Phải có:
+
+```text
+Loading indicator
+
+hoặc
+
+Job Card Skeleton
+```
+
+---
+
+# 23. Error State
+
+## FR-18
+
+Nếu không thể tải danh sách việc làm:
+
+Không hiển thị dữ liệu giả.
+
+Hiển thị:
+
+> **Chưa thể tải danh sách việc làm**
+>
+> Vui lòng thử lại sau.
+
+Có CTA:
+
+> Thử lại
+
+---
+
+# 24. Footer
+
+## FR-19 — Disclaimer
+
+Footer phải có disclaimer.
+
+Ví dụ:
+
+> Website tổng hợp thông tin tuyển dụng từ các nguồn công khai và không đại diện cho các doanh nghiệp được đề cập, trừ khi có thông báo rõ ràng.
+>
+> Người tìm việc nên kiểm tra nguồn tuyển dụng trước khi ứng tuyển.
+>
+> Không chuyển tiền hoặc đặt cọc khi xin việc.
+
+---
+
+# 25. Report Job
+
+## FR-20 — Report
+
+Mỗi card hoặc footer nên cung cấp:
+
+> 🚩 Báo tin sai / hết hạn
+
+MVP có thể dẫn đến một form bên ngoài.
+
+Người dùng tối thiểu có thể báo:
+
+```text
+Tin đã hết hạn
+Thông tin sai
+Không liên hệ được HR
+Link bị lỗi
+Nghi ngờ lừa đảo
+Khác
+```
+
+---
+
+# 26. Analytics Requirements
+
+Đây là requirement bắt buộc vì mục tiêu của MVP là validation.
+
+## FR-21 — Landing Visit
+
+Track:
+
+```text
+page_view
+```
+
+Có khả năng xác định traffic source/campaign khi thông tin này tồn tại.
+
+---
+
+## FR-22 — HR Contact Click
+
+Track:
+
+```text
+job_hr_click
+```
+
+Properties tối thiểu:
+
+```text
+job_id
+company
+position
+contact_type
+```
+
+Tracking phải xảy ra trước khi chuyển người dùng sang kênh HR, trong phạm vi khả thi.
+
+---
+
+## FR-23 — Source Click
+
+Track:
+
+```text
+job_source_click
+```
+
+Properties:
+
+```text
+job_id
+company
+source_type
+```
+
+---
+
+## FR-24 — Search
+
+Track:
+
+```text
+job_search
+```
+
+Có thể lưu:
+
+```text
+keyword
+result_count
+```
+
+Không thu thập dữ liệu cá nhân không cần thiết.
+
+---
+
+## FR-25 — Filter
+
+Track:
+
+```text
+job_filter
+```
+
+Có thể chứa:
+
+```text
+industrial_park
+salary
+gender
+result_count
+```
+
+---
+
+# 27. Campaign Tracking
+
+## FR-26
+
+Landing page phải bảo toàn thông tin campaign được truyền từ URL.
+
+Ví dụ logic:
+
+```text
+source = facebook
+medium = group
+campaign = group_A
+```
+
+Mục tiêu là phân biệt hiệu quả giữa các nguồn traffic.
+
+Ví dụ:
+
+```text
+Group A
+
+300 visitors
+52 HR clicks
+
+
+Group B
+
+500 visitors
+8 HR clicks
+```
+
+Từ đó administrator có thể xác định nguồn traffic chất lượng.
+
+---
+
+# 28. Responsive Requirements
+
+## NFR-01 — Mobile First
+
+Mobile là thiết bị ưu tiên.
+
+Các chức năng quan trọng phải sử dụng tốt ở viewport điện thoại.
+
+Đặc biệt:
+
+```text
+Search
+Filter
+Job Card
+HR CTA
+Source CTA
+```
+
+Không được yêu cầu horizontal scrolling để đọc card.
+
+---
+
+# 29. Usability Requirements
+
+## NFR-02
+
+Người dùng mới phải có thể hiểu mục đích website trong vài giây đầu:
+
+> Đây là nơi tìm việc KCN.
+
+## NFR-03
+
+Người dùng không cần hướng dẫn để tìm và liên hệ một công việc.
+
+## NFR-04
+
+Không sử dụng thuật ngữ kỹ thuật hoặc thuật ngữ tuyển dụng phức tạp nếu không cần thiết.
+
+## NFR-05
+
+CTA HR phải dễ thao tác bằng ngón tay trên mobile.
+
+---
+
+# 30. Performance Requirement
+
+## NFR-06
+
+Landing page cần ưu tiên tải nhanh trên mạng di động.
+
+Các thành phần không quan trọng không được làm trì hoãn việc hiển thị:
+
+```text
+Job List
+Search
+Filter
+```
+
+Logo/image phải có fallback phù hợp khi không tải được.
+
+---
+
+# 31. Data Requirements
+
+Một Job Record logic có cấu trúc:
+
+```text
+Job
+│
+├── ID *
+├── Company *
+├── Position *
+│
+├── Salary Min
+├── Salary Max
+├── Salary Text *
+│
+├── Industrial Park *
+├── Location *
+├── Province
+│
+├── Gender
+├── Age
+├── Shift
+├── Experience
+│
+├── Urgent
+│
+├── HR Contact Type
+├── HR Contact
+│
+├── Source Type *
+├── Source Link *
+│
+├── Updated At *
+└── Status *
+```
+
+`*` = dữ liệu bắt buộc theo business rule hiện tại.
+
+---
+
+# 32. Salary Business Rules
+
+## BR-05
+
+Salary có thể có trường hợp:
+
+```text
+9–12 triệu
+Từ 10 triệu
+Đến 15 triệu
+Thỏa thuận
+Theo năng lực
+```
+
+Vì vậy không nên giả định mọi job đều có đầy đủ `min` và `max`.
+
+Phải có `Salary Text` dùng để hiển thị.
+
+Các giá trị số phục vụ filtering khi có dữ liệu phù hợp.
+
+Nếu salary không thể chuyển thành số:
+
+> vẫn hiển thị job
+
+nhưng phải có quy tắc rõ ràng về việc job đó có xuất hiện trong filter mức lương hay không.
+
+---
+
+# 33. Data Quality Business Rules
+
+## BR-06
+
+Job thiếu:
+
+```text
+Company
+Position
+Location
+Source
+Updated Date
+```
+
+không đủ điều kiện publish.
+
+## BR-07
+
+Job có source link lỗi cần được kiểm tra/cập nhật.
+
+## BR-08
+
+Job quá cũ không tự động được coi là còn tuyển.
+
+Administrator chịu trách nhiệm chuyển:
+
+```text
+ACTIVE → EXPIRED
+```
+
+khi cần thiết.
+
+---
+
+# 34. Out of Scope — MVP
+
+Đây là phần rất quan trọng để tránh scope creep.
+
+**Version 1 KHÔNG BAO GỒM:**
+
+```text
+User Registration
+User Login
+
+HR Registration
+HR Login
+
+User Profile
+HR Profile
+
+CV Creation
+CV Upload
+
+Apply Inside Website
+
+Job Detail Page
+
+Saved Jobs
+
+Job Alerts
+
+Chat
+
+Recommendation Engine
+
+AI Matching
+
+Admin Dashboard
+
+HR Dashboard
+
+Payment
+
+Featured Job Payment
+
+Subscription
+
+Company Page
+
+Review Company
+
+Comment
+
+Social Feed
+
+Push Notification
+```
+
+Bất kỳ yêu cầu nào thuộc nhóm trên được coi là:
+
+**Future Enhancement**
+
+trừ khi Product Owner thay đổi scope.
+
+---
+
+# 35. MVP Sitemap
+
+Chỉ cần:
+
+```text
+/
+│
+├── Header
+│
+├── Trust Banner
+│
+├── Search
+│
+├── Filters
+│
+├── Job Count
+│
+├── Job List
+│    │
+│    ├── Job Card
+│    ├── Job Card
+│    └── Job Card...
+│
+└── Footer
+```
+
+Không cần:
+
+```text
+/jobs
+/jobs/:id
+/company
+/login
+/register
+/profile
+```
+
+---
+
+# 36. Core Acceptance Scenario
+
+### Scenario 01 — Tìm và liên hệ HR
+
+**Given**
+
+Người dùng đến từ một bài đăng Facebook.
+
+**When**
+
+Người dùng mở landing page.
+
+**Then**
+
+Hệ thống hiển thị các tin `ACTIVE`.
+
+**When**
+
+Người dùng chọn:
+
+> KCN Thăng Long
+
+**Then**
+
+chỉ những job phù hợp được hiển thị.
+
+**When**
+
+người dùng chọn:
+
+> Nữ
+
+**Then**
+
+job tuyển `Nữ` và `Nam/Nữ` được giữ lại.
+
+**When**
+
+người dùng click:
+
+> Liên hệ HR qua Zalo
+
+**Then**
+
+hệ thống ghi nhận `job_hr_click`.
+
+**And**
+
+người dùng được chuyển sang kênh HR tương ứng.
+
+Không có login, form hoặc Job Detail chen giữa hai bước.
+
+---
+
+# 37. Secondary Acceptance Scenario
+
+### Scenario 02 — Kiểm tra nguồn trước khi liên hệ
+
+**Given**
+
+người dùng chưa tin tưởng tin tuyển dụng.
+
+**When**
+
+click:
+
+> Xem nguồn tuyển dụng
+
+**Then**
+
+hệ thống ghi nhận `job_source_click`.
+
+**And**
+
+mở nguồn tuyển dụng tương ứng.
+
+Người dùng không bị yêu cầu đăng ký.
+
+---
+
+# 38. Product Principle
+
+Mọi quyết định trong MVP nên quay lại một câu hỏi:
+
+> **Thay đổi này có giúp người tìm việc tìm được công việc phù hợp và tiếp cận nguồn/HR nhanh hơn không?**
+
+Nếu câu trả lời là **không**, chưa cần đưa vào MVP.
+
+Vì vậy core product hiện tại chỉ là:
+
+```text
+DISCOVER
+   ↓
+FILTER
+   ↓
+TRUST
+   ↓
+CONTACT
+```
+
+Và mục tiêu business cần kiểm chứng là:
+
+> **Người tìm việc từ các group tuyển dụng có sẵn sàng rời mạng xã hội để sử dụng một landing page tổng hợp việc làm có nguồn và sau đó liên hệ HR hay không?**
+
+Nếu MVP chứng minh được hành vi **Facebook → Landing → HR click**, lúc đó mới có căn cứ viết **SRS V2** cho phía HR: tự đăng tin, quản lý tin, moderation, doanh nghiệp xác minh và mô hình thu phí.

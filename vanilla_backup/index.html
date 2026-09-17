@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Việc Làm KCN — Tìm Việc Khu Công Nghiệp Nhanh Nhất</title>
+  <meta name="description" content="Tổng hợp việc làm khu công nghiệp mới nhất. Có nguồn tuyển dụng, liên hệ HR trực tiếp. Không cần đăng ký tài khoản.">
+  <meta name="keywords" content="việc làm khu công nghiệp, tuyển dụng KCN, tìm việc công nhân, việc làm nhà máy">
+  <meta property="og:title" content="Việc Làm KCN — Tìm Việc Khu Công Nghiệp">
+  <meta property="og:description" content="Tổng hợp việc làm khu công nghiệp mới nhất, có nguồn tuyển dụng.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <div class="logo-badge">⚡</div>
+          <div class="logo-text">
+            <span class="logo-name">Việc Làm KCN</span>
+            <span class="logo-tagline">Việc làm mới nhất • Có nguồn tuyển dụng</span>
+          </div>
+        </div>
+        <div class="header-meta" id="headerJobCount"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TRUST BANNER -->
+  <section class="trust-banner" id="trustBanner">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-card trust-card--shield">
+          <div class="trust-card-icon">⚡</div>
+          <div class="trust-card-body">
+            <strong>Cơ hội việc làm mới mỗi ngày</strong>
+            <p>Hàng trăm công việc được cập nhật liên tục từ các khu công nghiệp. Chọn vị trí phù hợp và kết nối trực tiếp với nhà tuyển dụng.</p>
+          </div>
+        </div>
+        <div class="trust-card trust-card--warning">
+          <div class="trust-card-icon">🎯</div>
+          <div class="trust-card-body">
+            <strong>Mức lương & đãi ngộ cạnh tranh</strong>
+            <p>Rất nhiều vị trí có đi kèm phụ cấp, hỗ trợ chuyên cần, tăng ca... Cơ hội gia tăng thu nhập tốt cho ứng viên sẵn sàng nhận việc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEARCH & FILTER -->
+  <section class="search-section" id="searchSection">
+    <div class="container">
+
+      <div class="search-wrapper">
+        <span class="search-prefix-icon">🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          class="search-input"
+          placeholder="Tìm theo tên công ty hoặc vị trí... (VD: Canon, công nhân)"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button class="search-clear-btn" id="searchClearBtn" aria-label="Xóa tìm kiếm" style="display:none">✕</button>
+      </div>
+
+      <div class="filter-bar" id="filterBar">
+        <div class="filter-group">
+          <label class="filter-label" for="filterKCN">📍 Khu công nghiệp</label>
+          <select id="filterKCN" class="filter-select">
+            <option value="">Tất cả KCN</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="filterSalary">💰 Mức lương</label>
+          <select id="filterSalary" class="filter-select">
+            <option value="">Tất cả mức lương</option>
+            <option value="8">Từ 8 triệu</option>
+            <option value="10">Từ 10 triệu</option>
+            <option value="12">Từ 12 triệu</option>
+            <option value="15">Từ 15 triệu</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label" for="filterGender">👤 Đối tượng</label>
+          <select id="filterGender" class="filter-select">
+            <option value="">Tất cả</option>
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+        </div>
+
+        <button class="filter-reset-btn" id="filterResetBtn" style="display:none">✕ Xóa lọc</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main" id="main">
+    <div class="container">
+
+      <div class="job-count-bar" id="jobCountBar" style="display:none">
+        <span class="job-count-text" id="jobCountText"></span>
+      </div>
+
+      <!-- Loading Skeletons -->
+      <div class="loading-grid" id="loadingState">
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+        <div class="skeleton-card"><div class="sk-line sk-title"></div><div class="sk-line sk-sub"></div><div class="sk-line sk-salary"></div><div class="sk-line sk-loc"></div><div class="sk-btn"></div></div>
+      </div>
+
+      <!-- Error State -->
+      <div class="error-state" id="errorState" style="display:none">
+        <div class="state-icon">😕</div>
+        <h2 class="state-title">Chưa thể tải danh sách việc làm</h2>
+        <p class="state-desc">Vui lòng thử lại sau.</p>
+        <button class="btn-primary" id="retryBtn">🔄 Thử lại</button>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="state-icon">🔍</div>
+        <h2 class="state-title">Không tìm thấy công việc phù hợp</h2>
+        <p class="state-desc">Hãy thử thay đổi từ khóa hoặc bộ lọc.</p>
+        <button class="btn-secondary" id="emptyResetBtn">Xóa bộ lọc</button>
+      </div>
+
+      <!-- Job Grid -->
+      <div class="job-grid" id="jobGrid"></div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-disclaimer">
+        <p>Website tổng hợp thông tin tuyển dụng từ các nguồn công khai và <strong>không đại diện</strong> cho các doanh nghiệp được đề cập, trừ khi có thông báo rõ ràng.</p>
+        <p>Người tìm việc nên kiểm tra nguồn tuyển dụng trước khi ứng tuyển.</p>
+        <p class="footer-warning">⚠️ Không chuyển tiền hoặc đặt cọc khi xin việc.</p>
+      </div>
+      <div class="footer-actions">
+        <a href="#" class="footer-report-link" id="footerReportLink">🚩 Báo tin sai / hết hạn</a>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Việc Làm KCN</span>
+        <span class="footer-dot">·</span>
+        <span>Dữ liệu từ nguồn công khai</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
