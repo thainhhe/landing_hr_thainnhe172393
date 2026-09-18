@@ -20,6 +20,12 @@ export type Job = {
   status: string | null;
   total_slots: number | null;
   filled_slots: number | null;
+  income_text?: string | null;
+  recruitment_bonus?: string | null;
+  bonus_deadline?: string | null;
+  bonus_note?: string | null;
+  benefits?: string | null;
+  quantity?: number | null;
 };
 
 const SHEET_ID = '1R-Rq2rihfBdZK5qhiLXzFq1X_iqif86ocf3KRFicpSk';
@@ -97,6 +103,10 @@ export async function fetchJobs(): Promise<Job[]> {
       status:           status,
       total_slots:      getNum(19),
       filled_slots:     getNum(20),
+      recruitment_bonus: getStr(21),
+      bonus_deadline:   getStr(22),
+      bonus_note:       getStr(23),
+      benefits:         getStr(24),
     });
   }
 

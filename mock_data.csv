@@ -1,13 +1,35 @@
-id,company,position,salary_text,salary_min,salary_max,industrial_park,location,gender,age,shift,experience,urgent,hr_contact_type,hr_contact,source_type,source_link,updated_at,status,total_slots,filled_slots
-j001,Canon Việt Nam,Công nhân sản xuất thiết bị in,9–12 triệu/tháng,9,12,KCN Thăng Long,"Đông Anh, Hà Nội",Nữ,18–35 tuổi,Ca ngày,Không yêu cầu,TRUE,zalo,0912345678,SOURCE,https://facebook.com,2026-09-17,ACTIVE,100,85
-j002,Samsung Electronics Việt Nam,Kỹ thuật viên điện tử,12–18 triệu/tháng,12,18,KCN Yên Phong,"Yên Phong, Bắc Ninh",Nam/Nữ,20–35 tuổi,Ca ngày / Ca đêm,1 năm,FALSE,phone,0923456789,SOURCE,https://facebook.com,2026-09-16,ACTIVE,20,5
-j003,LG Display,Công nhân lắp ráp màn hình,10–13 triệu/tháng,10,13,KCN Tràng Duệ,"An Dương, Hải Phòng",Nam,18–30 tuổi,Ca ngày,Không yêu cầu,TRUE,zalo,0934567890,HR_POSTED,https://facebook.com,2026-09-17,ACTIVE,50,48
-j004,Panasonic Việt Nam,Công nhân đóng gói sản phẩm,8.5–10 triệu/tháng,8.5,10,KCN Thăng Long,"Đông Anh, Hà Nội",Nữ,18–40 tuổi,Ca ngày,Không yêu cầu,FALSE,messenger,https://m.me/panasonic.hn,SOURCE,https://facebook.com,2026-09-15,ACTIVE,30,10
-j005,Foxconn Industrial Internet,Vận hành máy CNC,14–20 triệu/tháng,14,20,KCN Vân Trung,"Việt Yên, Bắc Giang",Nam,20–40 tuổi,Ca ngày,2 năm vận hành CNC,FALSE,phone,0945678901,SOURCE,https://facebook.com,2026-09-14,ACTIVE,15,12
-j006,Hòa Phát Group,Công nhân vận hành lò nung,Từ 12 triệu/tháng,12,,KCN Hải Dương,"Kinh Môn, Hải Dương",Nam,20–45 tuổi,Ca 3 ca,1 năm,TRUE,zalo,0956789012,SOURCE,https://facebook.com,2026-09-17,ACTIVE,40,39
-j007,Jabil Circuit Vietnam,Kỹ thuật viên bảo trì điện,15–22 triệu/tháng,15,22,KCN Yên Phong,"Yên Phong, Bắc Ninh",Nam/Nữ,22–40 tuổi,Ca ngày,2 năm điện công nghiệp,FALSE,zalo,0967890123,HR_POSTED,https://facebook.com,2026-09-13,ACTIVE,10,2
-j008,Texhong Ngân Long,Công nhân dệt may,8–10 triệu/tháng,8,10,KCN Hải Yên,"Móng Cái, Quảng Ninh",Nữ,18–35 tuổi,Ca ngày,Không yêu cầu,FALSE,phone,0978901234,SOURCE,https://facebook.com,2026-09-12,ACTIVE,200,150
-j009,Vingroup Logistics,Nhân viên kho vận,Thỏa thuận,,,KCN Thăng Long,"Đông Anh, Hà Nội",Nam/Nữ,,Ca hành chính,1 năm logistics,FALSE,messenger,https://m.me/vingroup.logistics,SOURCE,https://facebook.com,2026-09-11,ACTIVE,50,0
-j010,Amkor Technology Vietnam,Công nhân kiểm tra chất lượng (QC),11–14 triệu/tháng,11,14,KCN Yên Phong,"Yên Phong, Bắc Ninh",Nữ,18–30 tuổi,Ca ngày / Ca đêm,Không yêu cầu,TRUE,zalo,0989012345,COMPANY_VERIFIED,https://amkor.com.vn/tuyen-dung,2026-09-17,ACTIVE,30,28
-j011,TKG Taekwang,Công nhân may giày thể thao,9–11 triệu/tháng,9,11,KCN Tràng Duệ,"An Dương, Hải Phòng",Nữ,18–35 tuổi,Ca ngày,Không yêu cầu,FALSE,phone,0990123456,SOURCE,https://facebook.com,2026-09-10,ACTIVE,300,290
-j012,Intel Products Vietnam,Kỹ sư kiểm thử vi mạch,20–35 triệu/tháng,20,35,KCN Sài Gòn Hi-Tech,"Quận 9, TP. Hồ Chí Minh",Nam/Nữ,22–40 tuổi,Ca hành chính,2 năm semiconductor,FALSE,zalo,0901234567,HR_POSTED,https://facebook.com,2026-09-09,ACTIVE,5,4
+id,company,position,salary_text,salary_min,salary_max,industrial_park,location,gender,age,shift,experience,urgent,hr_contact_type,hr_contact,source_type,source_link,updated_at,status,total_slots,filled_slots,recruitment_bonus,bonus_deadline,bonus_note,benefits
+j001,Goertek,Công nhân sản xuất,11–15.1 triệu/tháng,11,15.1,"Nam Sơn Hạp Lĩnh, Quế Võ 1",Bắc Ninh,Nam/Nữ,18–40 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,120,Thưởng đến 10 triệu,30/09/2026,"Tiền thưởng trả cùng lương nếu làm đủ tháng và vẫn đang làm việc","Phỏng vấn & đào tạo 0 đồng
+Hỗ trợ ký túc xá và xe đưa đón"
+j002,Goertek,"Lắp ráp linh kiện tai nghe, đồng hồ","Lương CB 5.7tr + PC 1.25tr",5.7,,KCN Quế Võ,Bắc Ninh,Nam/Nữ,Trong độ tuổi lao động,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng lên tới 14 triệu,,"Làm đủ 7 công: 500k, làm đủ 14 công: 500k","Xe đưa đón miễn phí
+Ký túc xá hiện đại
+Phúc lợi đa dạng
+Đào tạo từ đầu"
+j003,Adtek,Công nhân sản xuất dây cáp,14–16 triệu/tháng,14,16,KCN Quế Võ 3,Bắc Ninh,Nam/Nữ,18–40 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng 9 triệu,,"Điều kiện: Chăm chỉ, chịu khó tăng ca","Môi trường điều hòa mát mẻ
+Ngồi làm, nhẹ nhàng
+Được mang điện thoại vào xưởng
+Hỗ trợ người mới"
+j004,TENMA,Kho - Lắp ráp - Sản xuất,Tổng thu nhập 14 triệu/tháng,14,,,Bắc Ninh,Nam/Nữ,18–40 tuổi,Theo sắp xếp,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng 12 triệu / 12 tháng,,"","Nghỉ 2 thứ 7, 4 chủ nhật/tháng
+Được mang điện thoại vào xưởng
+Tăng ca đều quanh năm
+Bảo hiểm đầy đủ"
+j005,ASKEY,"Sản xuất, Lắp ráp / SMT","Lương CB 5.5tr + PC 860k + TC 150-300k",5.5,,KCN Quế Võ 1,Bắc Ninh,Nam/Nữ,18–40 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng 11.8 triệu,,"Thưởng 7tr/3 tháng (2tr-2tr-3tr) + Thưởng Quý 4.8tr","Sản xuất làm ngồi phòng thường
+SMT làm đứng được đi lại thoải mái
+Môi trường sạch sẽ thoáng mát
+Hỗ trợ người mới"
+j006,SEGYUNG VINA,Công nhân QC / Sản xuất,"Lương CB 6.1tr + Tổng PC ~1.2tr+",6.1,,KCN Quế Võ 1,Bắc Ninh,Nam/Nữ,18–40 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng người mới 6 triệu,,"Đi làm ngay!","Làm ngồi thoải mái
+Điều hòa mát mẻ
+Không áp lực số lượng
+Môi trường thân thiện"
+j007,SEGYUNG VINA,Công nhân sản xuất Camera,"Lương CB 6.1tr + PC 1.95tr",6.1,,KCN Quế Võ 1,Bắc Ninh,Nam/Nữ,18–45 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,phone,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng nhận việc 6 triệu,,"Điều kiện: 25 công/tháng tính từ lúc vào làm","Phòng sạch hiện đại
+Ổn định lâu dài, phúc lợi đầy đủ
+Có ký túc xá
+Hỗ trợ hồ sơ miễn phí"
+j008,GOLDSUN,Công nhân Sản xuất / Kho / QC,"Lương CB 5.5tr + PC 1.5tr",5.5,,KCN Quế Võ,Bắc Ninh,Nam/Nữ,18–40 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,phone,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng gia nhập 6 triệu,,"","Môi trường làm việc chuyên nghiệp
+Thu nhập ổn định
+Cơ hội phát triển lâu dài
+Đầy đủ chế độ theo quy định"
+j009,BUJEON,Công nhân sản xuất / Lắp ráp,"Lương CB 5.66tr + PC 1.2tr",5.66,,KCN Quế Võ,Bắc Ninh,Nam/Nữ,18–45 tuổi,Ca ngày / đêm,Không yêu cầu,TRUE,zalo,0344985198,COMPANY_VERIFIED,https://facebook.com,2026-09-18,ACTIVE,500,0,Thưởng 3 triệu,,"","Có hỗ trợ ký túc xá
+Làm ngồi phòng thường, có điều hòa
+Được mang điện thoại vào xưởng
+Không cửa từ"
