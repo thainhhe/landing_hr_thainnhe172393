@@ -116,7 +116,7 @@ export default function JobCard({ job }: { job: Job }) {
       if (phone.startsWith('84')) phone = '0' + phone.slice(2);
       if (phone && !phone.startsWith('0')) phone = '0' + phone;
       href = `https://zalo.me/${phone}`;
-      ctaText = '💬 Liên hệ HR qua Zalo';
+      ctaText = '💬 Liên hệ HR';
       break;
     }
     case 'messenger':
